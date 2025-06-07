@@ -1,0 +1,96 @@
+body {
+  background-color: #050510;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#Pagina {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#Titulo,
+#Bienvenida {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#Entradas_Registrado {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+#Usuario,
+#Contraseña {
+  background-color: #050510;
+  border: 3px solid #808090;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
+}
+
+#Usuario::placeholder,
+#Contraseña::placeholder {
+  color: white;
+}
+
+#Usuario:focus,
+#Contraseña:focus {
+  color: white;
+  transform: scale(1.1, 1.1);
+}
+
+#BSesion {
+  background-color: #050510;
+  border: 3px solid #808090;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  display: flex;
+  margin: 0 auto;
+  width: 50%;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
+}
+
+#BSesion:hover,
+#BSesion:focus {
+  transform: scale(1.2, 1.2);
+  background-color: #101020;
+}
+
+
+#GatoIMG{
+  opacity: 0;
+  width: 20vw;
+  transition: all 1s ease-in;
+}
+
+#GatoIMG.entrada{
+  opacity: 1;
+}
+
