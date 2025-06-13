@@ -8,7 +8,7 @@ import ssl
 
 # Configuración de Flask
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 

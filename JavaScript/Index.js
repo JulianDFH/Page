@@ -15,7 +15,7 @@ const btn = document.getElementById('BSesion');
 
 
 async function backend_Respuesta(Usuario, Contraseña) {
-  const response = await fetch(`http://127.0.0.1:5000/Inicio_Sesion?Usuario=${encodeURIComponent(Usuario)}&Contraseña=${encodeURIComponent(Contraseña)}`);
+  const response = await fetch(`https://backend-qlrf.onrender.com/Inicio_Sesion?Usuario=${encodeURIComponent(Usuario)}&Contraseña=${encodeURIComponent(Contraseña)}`);
   let respuesta = await response.text();
   return respuesta;
 }
