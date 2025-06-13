@@ -4,6 +4,7 @@ from flask_caching import Cache
 from peewee import MySQLDatabase, Model, CharField
 import hashlib
 import ssl
+import os
 
 
 # Configuración de Flask
@@ -68,18 +69,8 @@ def inicio_sesion():
         return "False"
 
 
-# Iniciar servidor
-if __name__ == "__main__":
-    try:
-        iniciar_db()
-        app.run(debug=True)
-    except Exception as e:
-        print(f"Error al iniciar el servidor: {e}")
 
-@app.route("/debug_usuarios")
-def debug_usuarios():
-    usuarios = Usuario.select()
-    resultado = []
-    for u in usuarios:
-        resultado.append({'nombre': u.nombre, 'contraseña': u.contraseña})
-    return {"usuarios": resultado}
+# al final de tu archivo
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
