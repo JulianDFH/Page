@@ -8,7 +8,7 @@ import ssl
 
 # Configuración de Flask
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5500"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 
@@ -48,15 +48,23 @@ def iniciar_db():
 @cache.cached(timeout=86400)
 def inicio_sesion():
     usuario = request.args.get("Usuario", "")
-    contrasena = request.args.get("Contraseña", "")
+    contraseña = request.args.get("Contraseña", "")
+    
 
     try:
         user = Usuario.select().where(Usuario.nombre == usuario).first()
-        if user and hash_sha256(contrasena) == user.contraseña:
+        print(hash_sha256(contraseña))
+        print(user.contraseña)
+        if user and hash_sha256(contraseña) == user.contraseña:
+            print("True")
             return "True"
+
         else:
+            print("False")
             return "False"
     except Exception as e:
+        print("Error")
+        print(e)
         return "False"
 
 
@@ -67,3 +75,11 @@ if __name__ == "__main__":
         app.run(debug=True)
     except Exception as e:
         print(f"Error al iniciar el servidor: {e}")
+
+@app.route("/debug_usuarios")
+def debug_usuarios():
+    usuarios = Usuario.select()
+    resultado = []
+    for u in usuarios:
+        resultado.append({'nombre': u.nombre, 'contraseña': u.contraseña})
+    return {"usuarios": resultado}

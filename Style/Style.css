@@ -1,11 +1,38 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Este contenedor debe envolver TODO tu contenido */
+#Pagina {
+  will-change: transform;
+}
 body {
-  background-color: #050510;
   margin: 0;
   font-family: "Roboto", sans-serif;
   opacity: 0;
+
+
+
+  height: 100vh;  /* recomendable para que tome toda la pantalla */
+  background: linear-gradient(270deg, #050510, #101030, #050510);
+  background-size: 600% 600%;
+  animation: fondoGradiente 30s ease infinite;
   transition: opacity 0.5s ease-in;
 }
-
+@keyframes fondoGradiente {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 body.fade-in {
   opacity: 1;
 }
@@ -14,6 +41,10 @@ body.fade-out {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+
+
+
+
 
 #Pagina {
   min-height: 80vh;
@@ -85,12 +116,23 @@ body.fade-out {
 
 
 #GatoIMG{
+  display: flex;
+  align-items: center;
   opacity: 0;
   width: 20vw;
-  transition: all 1s ease-in;
+  transition: opacity 1s ease-in;
+  margin-bottom: 50px;
 }
 
 #GatoIMG.entrada{
   opacity: 1;
 }
 
+
+#Texto{
+  color: white;
+  text-align: center;
+  width: 50%;
+  font-size: 50px;
+
+}

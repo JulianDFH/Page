@@ -1,5 +1,13 @@
+
+
+function esperar(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 window.onload = () => {
   document.body.classList.add('fade-in');
+
 };
 
 
@@ -37,3 +45,25 @@ btn.onclick = async () => {
     });
   }
 };
+
+
+let scrollTarget = 0;
+let scrollCurrent = 0;
+const velocidad = 0.05;
+
+const contenedor = document.getElementById("Pagina");
+
+function animarScroll() {
+  scrollCurrent += (scrollTarget - scrollCurrent) * velocidad;
+  contenedor.style.transform = `translateY(-${scrollCurrent}px)`;
+  requestAnimationFrame(animarScroll);
+}
+
+window.addEventListener("wheel", (e) => {
+  scrollTarget += e.deltaY;
+  const maxScroll = contenedor.scrollHeight - window.innerHeight;
+  scrollTarget = Math.max(0, Math.min(scrollTarget, maxScroll));
+});
+
+animarScroll();
+
