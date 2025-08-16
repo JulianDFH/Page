@@ -49,7 +49,7 @@ btn.onclick = async () => {
 
 let scrollTarget = 0;
 let scrollCurrent = 0;
-const velocidad = 0.05;
+const velocidad = 0.07;
 
 const contenedor = document.getElementById("Pagina");
 
